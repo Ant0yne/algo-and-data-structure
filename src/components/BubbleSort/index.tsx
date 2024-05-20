@@ -1,21 +1,24 @@
-import { useCallback } from "react";
-import { useImmer } from "use-immer";
+import { useCallback, useState } from "react";
+import { produce } from "immer";
 //cSpell:ignore Immer, immer
 
-// FIXME:
 const BubbleSort = () => {
-	const [arr, setArr] = useImmer<number[]>([]);
+	const [arr, setArr] = useState<number[]>([]);
 
 	const modifyArr = useCallback(
 		(type: string) => {
 			if (type === "add") {
-				setArr((draft) => {
-					draft.push(Math.floor(Math.random() * (10000 - 1) + 1));
-				});
+				setArr(
+					produce((draft: number[]) => {
+						draft.push(Math.floor(Math.random() * (10000 - 1) + 1));
+					})
+				);
 			} else if (type === "remove") {
-				setArr((draft) => {
-					draft.pop();
-				});
+				setArr(
+					produce((draft: number[]) => {
+						draft.pop();
+					})
+				);
 			} else {
 				setArr([]);
 			}
@@ -23,53 +26,44 @@ const BubbleSort = () => {
 		[arr]
 	);
 
-	const sort = useCallback(
-		(type: string) => {
-			if (type === "asc") {
-				let change = true;
-				do {
-					change = false;
-					// console.log("longueur de arr : ", arr.length);
-					for (let i = 0; i < arr.length - 1; i++) {
-						console.log("i : ", i);
-						if (arr[i] > arr[i + 1]) {
-							let temp = arr[i];
-							console.log("temp", temp);
-							setArr((draft) => {
-								console.log("draft", draft);
-								draft[i] = draft[i + 1];
-							});
-							setArr((draft) => {
-								draft[i + 1] = temp;
-							});
-							// console.log(arr);
-							// change = true;
-						}
+	const sort = (type: string) => {
+		const tempArr = [...arr];
+		if (type === "asc") {
+			let isSwapped = true;
+
+			for (let i = 0; i < tempArr.length; i++) {
+				isSwapped = false;
+
+				for (let j = 0; j < tempArr.length - i - 1; j++) {
+					if (tempArr[j] > tempArr[j + 1]) {
+						let temp = tempArr[j];
+						tempArr[j] = tempArr[j + 1];
+						tempArr[j + 1] = temp;
+						isSwapped = true;
 					}
-				} while (change);
-			} else {
-				let change = true;
-				do {
-					change = false;
-					for (let i = arr.length; i > 0; i--) {
-						console.log("i : ", i);
-						if (arr[i] > arr[i - 1]) {
-							let temp = arr[i];
-							setArr((draft) => {
-								console.log("draft", draft);
-								draft[i] = draft[i - 1];
-							});
-							setArr((draft) => {
-								draft[i - 1] = temp;
-							});
-							// change = true;
-						}
-					}
-				} while (change);
+				}
+
+				if (!isSwapped) {
+					break;
+				}
 			}
-		},
-		[arr]
-	);
+		} else {
+			let isSwapped = true;
+
+			for (let i = tempArr.length; i > 0; i--) {
+				isSwapped = false;
+				for (let j = tempArr.length - i; j > 0; j--) {
+					if (tempArr[j] > tempArr[j - 1]) {
+						let temp = tempArr[j];
+						tempArr[j] = tempArr[j - 1];
+						tempArr[j - 1] = temp;
+						isSwapped = true;
+					}
+				}
+			}
+		}
+		setArr(tempArr);
+	};
 
 	return (
 		<div>
