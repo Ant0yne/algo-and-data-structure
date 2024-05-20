@@ -24,28 +24,18 @@ const SelectionSort = () => {
 
 	const sort = (type: string) => {
 		const tempArr = [...arr];
-		if (type === "asc") {
-			for (let i = 0; i < tempArr.length - 1; i++) {
-				let min = i;
-				for (let j = i + 1; j < tempArr.length; j++) {
-					if (tempArr[j] < tempArr[min]) {
-						min = j;
-					}
+		for (let i = 0; i < tempArr.length - 1; i++) {
+			let val = i;
+			for (let j = i + 1; j < tempArr.length; j++) {
+				if (
+					(type === "asc" && tempArr[j] < tempArr[val]) ||
+					(type === "desc" && tempArr[j] > tempArr[val])
+				) {
+					val = j;
 				}
-				if (min !== i) {
-					[tempArr[min], tempArr[i]] = [tempArr[i], tempArr[min]];
-				}
-			}
-		} else {
-			for (let i = 0; i < tempArr.length - 1; i++) {
-				let max = i;
-				for (let j = i + 1; j < tempArr.length; j++) {
-					if (tempArr[j] > tempArr[max]) {
-						max = j;
-					}
-				}
-				if (max !== i) {
-					[tempArr[max], tempArr[i]] = [tempArr[i], tempArr[max]];
+
+				if (val !== i) {
+					[tempArr[val], tempArr[i]] = [tempArr[i], tempArr[val]];
 				}
 			}
 		}
