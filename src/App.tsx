@@ -1,8 +1,10 @@
 import "./App.css";
 import BinarySearch from "./components/BinarySearch";
+import BubbleSort from "./components/BubbleSort";
 import InterpolationSearch from "./components/InterpolationSearch";
 
 function App() {
+	// Create a 1 to 100000 array
 	const arr: number[] = [];
 	let arrLength: number = 100000;
 	let counter: number = 1;
@@ -12,6 +14,7 @@ function App() {
 		counter++;
 	}
 
+	// Create an array with 30 numbers, each is the double of the previous
 	//cSpell:ignore Mult
 	const arrMult2: number[] = [];
 	arrLength = 30;
@@ -25,10 +28,11 @@ function App() {
 	console.log(arrMult2);
 
 	return (
-		<>
+		<main>
 			<BinarySearch arr={arr} />
 			<InterpolationSearch arr={arrMult2} />
-		</>
+			<BubbleSort />
+		</main>
 	);
 }
 
