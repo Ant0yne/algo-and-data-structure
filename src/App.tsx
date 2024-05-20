@@ -2,6 +2,7 @@ import "./App.css";
 import BinarySearch from "./components/BinarySearch";
 import BubbleSort from "./components/BubbleSort";
 import InterpolationSearch from "./components/InterpolationSearch";
+import SelectionSort from "./components/SelectionSort";
 
 function App() {
 	// Create a 1 to 100000 array
@@ -32,6 +33,7 @@ function App() {
 			<BinarySearch arr={arr} />
 			<InterpolationSearch arr={arrMult2} />
 			<BubbleSort />
+			<SelectionSort />
 		</main>
 	);
 }

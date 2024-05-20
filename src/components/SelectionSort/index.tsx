@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useImmer } from "use-immer";
 //cSpell:ignore Immer, immer
 
-const BubbleSort = () => {
+const SelectionSort = () => {
 	const [arr, setArr] = useImmer<number[]>([]);
 
 	const modifyArr = useCallback(
@@ -25,36 +25,27 @@ const BubbleSort = () => {
 	const sort = (type: string) => {
 		const tempArr = [...arr];
 		if (type === "asc") {
-			let isSwapped = true;
-
-			for (let i = 0; i < tempArr.length; i++) {
-				isSwapped = false;
-
-				for (let j = 0; j < tempArr.length - i - 1; j++) {
-					if (tempArr[j] > tempArr[j + 1]) {
-						let temp = tempArr[j];
-						tempArr[j] = tempArr[j + 1];
-						tempArr[j + 1] = temp;
-						isSwapped = true;
+			for (let i = 0; i < tempArr.length - 1; i++) {
+				let min = i;
+				for (let j = i + 1; j < tempArr.length; j++) {
+					if (tempArr[j] < tempArr[min]) {
+						min = j;
 					}
 				}
-
-				if (!isSwapped) {
-					break;
+				if (min !== i) {
+					[tempArr[min], tempArr[i]] = [tempArr[i], tempArr[min]];
 				}
 			}
 		} else {
-			let isSwapped = true;
-
-			for (let i = tempArr.length; i > 0; i--) {
-				isSwapped = false;
-				for (let j = tempArr.length - i; j > 0; j--) {
-					if (tempArr[j] > tempArr[j - 1]) {
-						let temp = tempArr[j];
-						tempArr[j] = tempArr[j - 1];
-						tempArr[j - 1] = temp;
-						isSwapped = true;
+			for (let i = 0; i < tempArr.length - 1; i++) {
+				let max = i;
+				for (let j = i + 1; j < tempArr.length; j++) {
+					if (tempArr[j] > tempArr[max]) {
+						max = j;
 					}
+				}
+				if (max !== i) {
+					[tempArr[max], tempArr[i]] = [tempArr[i], tempArr[max]];
 				}
 			}
 		}
@@ -63,7 +54,7 @@ const BubbleSort = () => {
 
 	return (
 		<div>
-			<h2>Bubble Sort</h2>
+			<h2>Selection Sort</h2>
 			{arr.length > 0 && (
 				<div>
 					{arr.map((elem) => (
@@ -100,4 +91,4 @@ const BubbleSort = () => {
 	);
 };
 
-export default BubbleSort;
+export default SelectionSort;
