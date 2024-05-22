@@ -1,6 +1,7 @@
 import "./App.css";
 import BinarySearch from "./components/BinarySearch";
 import BubbleSort from "./components/BubbleSort";
+import InsertionSort from "./components/InsertionSort";
 import InterpolationSearch from "./components/InterpolationSearch";
 import SelectionSort from "./components/SelectionSort";
 
@@ -34,6 +35,7 @@ function App() {
 			<InterpolationSearch arr={arrMult2} />
 			<BubbleSort />
 			<SelectionSort />
+			<InsertionSort />
 		</main>
 	);
 }
