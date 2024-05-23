@@ -3,6 +3,7 @@ import BinarySearch from "./components/BinarySearch";
 import BubbleSort from "./components/BubbleSort";
 import InsertionSort from "./components/InsertionSort";
 import InterpolationSearch from "./components/InterpolationSearch";
+import MergeSort from "./components/MergeSort";
 import SelectionSort from "./components/SelectionSort";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 			<BubbleSort />
 			<SelectionSort />
 			<InsertionSort />
+			<MergeSort />
 		</main>
 	);
 }
