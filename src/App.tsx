@@ -4,6 +4,7 @@ import BubbleSort from "./components/BubbleSort";
 import InsertionSort from "./components/InsertionSort";
 import InterpolationSearch from "./components/InterpolationSearch";
 import MergeSort from "./components/MergeSort";
+import QuickSort from "./components/QuickSort";
 import SelectionSort from "./components/SelectionSort";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 			<SelectionSort />
 			<InsertionSort />
 			<MergeSort />
+			<QuickSort />
 		</main>
 	);
 }
