@@ -6,6 +6,7 @@ import InterpolationSearch from "./components/InterpolationSearch";
 import MergeSort from "./components/MergeSort";
 import QuickSort from "./components/QuickSort";
 import SelectionSort from "./components/SelectionSort";
+import PriorityQueue from "./components/PriorityQueue";
 
 function App() {
 	// Create a 1 to 100000 array
@@ -33,6 +34,7 @@ function App() {
 
 	return (
 		<main>
+			<PriorityQueue />
 			<BinarySearch arr={arr} />
 			<InterpolationSearch arr={arrMult2} />
 			<BubbleSort />
