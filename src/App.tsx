@@ -7,6 +7,7 @@ import MergeSort from "./components/MergeSort";
 import QuickSort from "./components/QuickSort";
 import SelectionSort from "./components/SelectionSort";
 import PriorityQueue from "./components/PriorityQueue";
+import LinkedList from "./components/LinkedList";
 
 function App() {
 	// Create a 1 to 100000 array
@@ -30,11 +31,12 @@ function App() {
 		counter *= 2;
 	}
 
-	console.log(arrMult2);
+	// console.log(arrMult2);
 
 	return (
 		<main>
 			<PriorityQueue />
+			<LinkedList />
 			<BinarySearch arr={arr} />
 			<InterpolationSearch arr={arrMult2} />
 			<BubbleSort />
