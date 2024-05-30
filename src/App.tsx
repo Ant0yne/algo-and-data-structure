@@ -8,6 +8,8 @@ import QuickSort from "./components/QuickSort";
 import SelectionSort from "./components/SelectionSort";
 import PriorityQueue from "./components/PriorityQueue";
 import LinkedList from "./components/LinkedList";
+import HashTable from "./components/HashTable";
+import AdjacencyMatrix from "./components/AdjacencyMatrix";
 
 function App() {
 	// Create a 1 to 100000 array
@@ -44,6 +46,8 @@ function App() {
 			<InsertionSort />
 			<MergeSort />
 			<QuickSort />
+			<HashTable />
+			<AdjacencyMatrix />
 		</main>
 	);
 }
