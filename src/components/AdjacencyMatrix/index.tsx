@@ -103,16 +103,16 @@ const AdjacencyMatrix = () => {
 		}
 	}
 
-	const test2 = new UDGraph(5);
-	console.log("UDGraph", test2.adjacencyMatrix);
-	test2.addEdge(2, 3);
-	console.log("UDGraph", test2.adjacencyMatrix);
-	console.log("UDGraph", test2.getNeighbors(3));
-	console.log("UDGraph", test2.getNeighbors(2));
-	console.log("UDGraph", test2.hasEdge(3, 2));
-	console.log("UDGraph", test2.hasEdge(2, 3));
-	test2.removeEdge(2, 3);
-	console.log("UDGraph", test2.adjacencyMatrix);
+	// const test2 = new UDGraph(5);
+	// console.log("UDGraph", test2.adjacencyMatrix);
+	// test2.addEdge(2, 3);
+	// console.log("UDGraph", test2.adjacencyMatrix);
+	// console.log("UDGraph", test2.getNeighbors(3));
+	// console.log("UDGraph", test2.getNeighbors(2));
+	// console.log("UDGraph", test2.hasEdge(3, 2));
+	// console.log("UDGraph", test2.hasEdge(2, 3));
+	// test2.removeEdge(2, 3);
+	// console.log("UDGraph", test2.adjacencyMatrix);
 
 	return <div>AdjacencyMatrix</div>;
 };

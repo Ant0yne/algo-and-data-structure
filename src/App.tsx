@@ -10,6 +10,7 @@ import PriorityQueue from "./components/PriorityQueue";
 import LinkedList from "./components/LinkedList";
 import HashTable from "./components/HashTable";
 import AdjacencyMatrix from "./components/AdjacencyMatrix";
+import AdjacencyList from "./components/AdjancencyList";
 
 function App() {
 	// Create a 1 to 100000 array
@@ -48,6 +49,7 @@ function App() {
 			<QuickSort />
 			<HashTable />
 			<AdjacencyMatrix />
+			<AdjacencyList />
 		</main>
 	);
 }
