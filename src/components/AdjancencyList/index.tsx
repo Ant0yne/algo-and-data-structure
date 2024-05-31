@@ -27,6 +27,32 @@ const AdjacencyList = () => {
 		hasEdge(node1: number, node2: number): boolean | undefined {
 			return this.adjacencyList.get(node1)?.has(node2);
 		}
+
+		depthFirstSearch(src: number, visited = new Set()) {
+			visited.add(src);
+			console.log(src + " visited");
+			this.adjacencyList.get(src)?.forEach((node) => {
+				if (!visited.has(node)) {
+					this.depthFirstSearch(node, visited);
+				}
+			});
+		}
+
+		breadthFirstSearch(src: number) {
+			const visited: Set<number> = new Set();
+			const queue: number[] = [src];
+			visited.add(src);
+			while (queue.length > 0) {
+				const currentNode: number = queue.shift();
+				console.log(currentNode + " visited");
+				this.adjacencyList.get(currentNode)?.forEach((node) => {
+					if (!visited.has(node)) {
+						visited.add(node);
+						queue.push(node);
+					}
+				});
+			}
+		}
 	}
 
 	// const test = new UUGraph();
@@ -38,9 +64,11 @@ const AdjacencyList = () => {
 	// test.addEdge(5, 2);
 	// console.log("3", test);
 	// test.addNode(3);
-	// test.addEdge(5, 3);
+	// test.addEdge(3, 5);
 	// console.log("4", test.getNeighbors(5));
 	// console.log("5", test.hasEdge(5, 2));
+	// test.depthFirstSearch(5);
+	// test.breadthFirstSearch(5);
 
 	// Unweighted and Directed
 	class UDGraph {
@@ -69,7 +97,48 @@ const AdjacencyList = () => {
 		hasEdge(node1: number, node2: number): boolean | undefined {
 			return this.adjacencyList.get(node1)?.has(node2);
 		}
+
+		depthFirstSearch(src: number, visited = new Set()) {
+			visited.add(src);
+			console.log(src + " visited");
+			this.adjacencyList.get(src)?.forEach((node) => {
+				if (!visited.has(node)) {
+					this.depthFirstSearch(node, visited);
+				}
+			});
+		}
+
+		breadthFirstSearch(src: number) {
+			const visited: Set<number> = new Set();
+			const queue: number[] = [src];
+			visited.add(src);
+			while (queue.length > 0) {
+				const currentNode: number = queue.shift();
+				console.log(currentNode + " visited");
+				this.adjacencyList.get(currentNode)?.forEach((node) => {
+					if (!visited.has(node)) {
+						visited.add(node);
+						queue.push(node);
+					}
+				});
+			}
+		}
 	}
+
+	// const test = new UDGraph();
+	// test.addNode(5);
+	// console.log("1", test);
+	// test.addEdge(5, 2);
+	// console.log("2", test);
+	// test.addNode(2);
+	// test.addEdge(5, 2);
+	// console.log("3", test);
+	// test.addNode(3);
+	// test.addEdge(3, 5);
+	// console.log("4", test.getNeighbors(5));
+	// console.log("5", test.hasEdge(5, 2));
+	// test.depthFirstSearch(5);
+	// test.breadthFirstSearch(5);
 
 	return <div>AdjacencyList</div>;
 };
