@@ -11,6 +11,7 @@ import LinkedList from "./components/LinkedList";
 import HashTable from "./components/HashTable";
 import AdjacencyMatrix from "./components/AdjacencyMatrix";
 import AdjacencyList from "./components/AdjancencyList";
+import BinarySearchTree from "./components/BinarySearchTree";
 
 function App() {
 	// Create a 1 to 100000 array
@@ -50,6 +51,7 @@ function App() {
 			<HashTable />
 			<AdjacencyMatrix />
 			<AdjacencyList />
+			<BinarySearchTree />
 		</main>
 	);
 }

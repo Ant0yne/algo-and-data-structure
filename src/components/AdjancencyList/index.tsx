@@ -43,7 +43,7 @@ const AdjacencyList = () => {
 			const queue: number[] = [src];
 			visited.add(src);
 			while (queue.length > 0) {
-				const currentNode: number = queue.shift();
+				const currentNode: number = queue.shift()!;
 				console.log(currentNode + " visited");
 				this.adjacencyList.get(currentNode)?.forEach((node) => {
 					if (!visited.has(node)) {
@@ -113,7 +113,7 @@ const AdjacencyList = () => {
 			const queue: number[] = [src];
 			visited.add(src);
 			while (queue.length > 0) {
-				const currentNode: number = queue.shift();
+				const currentNode: number = queue.shift()!;
 				console.log(currentNode + " visited");
 				this.adjacencyList.get(currentNode)?.forEach((node) => {
 					if (!visited.has(node)) {

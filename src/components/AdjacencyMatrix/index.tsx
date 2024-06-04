@@ -74,7 +74,7 @@ const AdjacencyMatrix = () => {
 			const visited: number[] = [src];
 			const queue: number[] = [src];
 			while (queue.length > 0) {
-				const currentNode: number = queue.shift();
+				const currentNode: number = queue.shift()!;
 				console.log(currentNode + " visited BFS");
 				for (let i = 0; i < this.adjacencyMatrix[currentNode].length - 1; i++) {
 					if (this.adjacencyMatrix[currentNode][i] && !visited[i]) {
@@ -95,13 +95,13 @@ const AdjacencyMatrix = () => {
 	// test.removeEdge(3, 2);
 	// console.log("UUGraph", test.adjacencyMatrix);
 
-	const test4 = new UUGraph(6);
-	test4.addEdge(2, 3);
-	test4.addEdge(3, 4);
-	test4.addEdge(4, 5);
-	test4.addEdge(2, 1);
-	test4.depthFirstSearch(2);
-	test4.breadthFirstSearch(2);
+	// const test4 = new UUGraph(6);
+	// test4.addEdge(2, 3);
+	// test4.addEdge(3, 4);
+	// test4.addEdge(4, 5);
+	// test4.addEdge(2, 1);
+	// test4.depthFirstSearch(2);
+	// test4.breadthFirstSearch(2);
 
 	// Unweighted and Directed
 	class UDGraph {
@@ -173,7 +173,7 @@ const AdjacencyMatrix = () => {
 			const visited: number[] = [src];
 			const queue: number[] = [src];
 			while (queue.length > 0) {
-				const currentNode: number = queue.shift();
+				const currentNode: number = queue.shift()!;
 				console.log(currentNode + " visited BFS");
 				for (let i = 0; i < this.adjacencyMatrix[currentNode].length - 1; i++) {
 					if (this.adjacencyMatrix[currentNode][i] && !visited[i]) {
