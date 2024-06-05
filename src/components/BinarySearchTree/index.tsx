@@ -50,15 +50,43 @@ const BinarySearchTree = () => {
 			return this.root;
 		}
 
-		findMinNode(node: Node): Node {
-			if (node.left === null) {
-				return node;
+		findMinNode(node: Node | null = this.root): Node | string {
+			if (node !== null) {
+				if (node?.left === null) {
+					return node;
+				} else {
+					return this.findMinNode(node?.left!);
+				}
 			} else {
-				return this.findMinNode(node.left);
+				return "node not found";
 			}
 		}
 
-		preorder(node: Node | null, nodes: number[] = []): number[] {
+		findMaxNode(node: Node | null = this.root): Node | string {
+			if (node !== null) {
+				if (node?.right === null) {
+					return node;
+				} else {
+					return this.findMaxNode(node.right);
+				}
+			} else {
+				return "node not found";
+			}
+		}
+
+		search(data: number, node: Node | null = this.root): Node | null {
+			if (node === null) {
+				return null;
+			} else if (data < node.data) {
+				return this.search(data, node.left);
+			} else if (data > node.data) {
+				return this.search(data, node.right);
+			} else {
+				return node;
+			}
+		}
+
+		preorder(node: Node | null = this.root, nodes: number[] = []): number[] {
 			if (node !== null) {
 				nodes.push(node.data);
 				this.preorder(node.left, nodes);
@@ -67,7 +95,7 @@ const BinarySearchTree = () => {
 			return nodes;
 		}
 
-		inorder(node: Node | null, nodes: number[] = []): number[] {
+		inorder(node: Node | null = this.root, nodes: number[] = []): number[] {
 			if (node !== null) {
 				this.inorder(node.left, nodes);
 				nodes.push(node.data);
@@ -76,7 +104,7 @@ const BinarySearchTree = () => {
 			return nodes;
 		}
 
-		postorder(node: Node | null, nodes: number[] = []): number[] {
+		postorder(node: Node | null = this.root, nodes: number[] = []): number[] {
 			if (node !== null) {
 				this.postorder(node.left, nodes);
 				this.postorder(node.right, nodes);
@@ -113,8 +141,10 @@ const BinarySearchTree = () => {
 				}
 
 				const minNode = this.findMinNode(node.right);
-				node.data = minNode.data;
-				node.right = this._removeNode(node.right, minNode.data);
+				if (typeof minNode !== "string") {
+					node.data = minNode.data;
+					node.right = this._removeNode(node.right, minNode.data);
+				}
 				return node;
 			}
 		}
@@ -137,11 +167,15 @@ const BinarySearchTree = () => {
 
 	console.log(BSTree.getRootNode());
 
-	console.log("preorder:", BSTree.preorder(BSTree.getRootNode()));
-	console.log("inorder:", BSTree.inorder(BSTree.getRootNode()));
-	console.log("postorder:", BSTree.postorder(BSTree.getRootNode()));
-	// BSTree.remove(22);
-	// console.log("inorder:", BSTree.inorder(BSTree.getRootNode()));
+	console.log("preorder:", BSTree.preorder());
+	console.log("inorder:", BSTree.inorder());
+	console.log("postorder:", BSTree.postorder());
+
+	console.log("minNode:", BSTree.findMinNode());
+	console.log("maxNode:", BSTree.findMaxNode());
+	BSTree.remove(22);
+	console.log("inorder:", BSTree.inorder());
+	console.log("search:", BSTree.search(18));
 
 	return <div>BinarySearchTree</div>;
 };
